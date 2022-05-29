@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { reactive, ref } from '@vue/reactivity'
+import { reactive } from '@vue/reactivity'
 import { useStore } from 'vuex'
 import { computed } from '@vue/runtime-core'
 import { types } from '../store/mutationTypes'
@@ -75,7 +75,7 @@ export default {
     const store = useStore()
     const { CLEAN_LIST } = types
     
-    state.cartData = computed(() => store.state.listaDeCompras)
+    state.cartData = computed(() => store.state.cart.listaDeCompras)
     state.totalPrice = computed(() => store.getters.getTotalPrice)
     state.totalItens = computed(() => store.getters.getTotalItens)
 

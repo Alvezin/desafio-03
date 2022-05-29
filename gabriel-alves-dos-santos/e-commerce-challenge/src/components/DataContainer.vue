@@ -1,7 +1,7 @@
 <template>
     <section>
         <div v-if="state.turnToLoad">
-            <loading-component />
+            <loading-component/>
         </div>
         <section v-else class="data-container"
             v-for="item in state.data" :key="item.id"
@@ -35,7 +35,7 @@ export default {
     })
     const store = useStore()
     const { CLEAN_DATA, ADD_TO_CART } = types
-    state.data = computed(() => store.state.dataContainer)
+    state.data = computed(() => store.state.dados.dataContainer)
 
     
     function turnToPrice(num){
@@ -80,8 +80,8 @@ export default {
         }
       }  
     )
-    watch(() => store.state.selectedCategory,
-        () => getCategory(store.state.selectedCategory),
+    watch(() => store.state.dados.selectedCategory,
+        () => getCategory(store.state.dados.selectedCategory),
         {
           deep: true
         }
@@ -92,7 +92,8 @@ export default {
     return {
       state,
       cartAdd,
-      turnToPrice
+      turnToPrice,
+      getAll
     }
   }
 
